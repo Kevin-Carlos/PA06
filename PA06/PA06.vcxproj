@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BinarySearchTree.cpp" />
+    <ClCompile Include="PA06.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="makefile" />

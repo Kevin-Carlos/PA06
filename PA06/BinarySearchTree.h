@@ -20,7 +20,7 @@
 
 #include "BinarySearchTree.cpp"
 
-template<class Itemtype>
+template<class ItemType>
 class BinarySearchTree
 {
 private: BinaryNode<ItemType>* rootPtr;
@@ -84,7 +84,7 @@ public:
    //    Public Traversals Section
    //---------------------------------------------------------------------------
    void preorderTraverse ( void visit ( ItemType& ) ) const;
-   vooid inorderTraverse ( void visit ( ItemType& ) ) const;
+   void inorderTraverse ( void visit ( ItemType& ) ) const;
    void postorderTraverse ( void visit ( ItemType& ) ) const;
 
    //---------------------------------------------------------------------------

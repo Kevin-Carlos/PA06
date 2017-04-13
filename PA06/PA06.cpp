@@ -1,0 +1,4 @@
+// Header Files ////////////////////////////////////////////////////////////////
+#include "BinarySearchTree.h"
+
+typedef BinarySearchTree<int> searchTree;

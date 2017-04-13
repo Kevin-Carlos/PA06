@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PA06/BinarySearchTree.cpp
+/PA06/BinarySearchTree.cpp
