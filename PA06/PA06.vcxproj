@@ -63,6 +63,12 @@
   <ItemGroup>
     <ClInclude Include="BinarySearchTree.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BinarySearchTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="makefile" />
+  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
