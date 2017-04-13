@@ -16,28 +16,82 @@
 #define _BINARY_SEARCH_TREE
 
 // Header Files ////////////////////////////////////////////////////////////////
+#include <memory>
+
+#include "BinarySearchTree.cpp"
 
 template<class Itemtype>
 class BinarySearchTree
 {
 private: BinaryNode<ItemType>* rootPtr;
+
 protected:
 	//--------------------------------------------------------------------------
 	//		Protected Utility Methods Section:
 	//		Recursive helper methods for the public methods.
 	//--------------------------------------------------------------------------
-	//	Recursively finds where the given node should be placed and
-	//	Inserts it in a leaf at that point. 
-   BinaryNode<ItemType>* insertInorder(BinaryNode<ItemType>* subTreePtr,
-                                       BinaryNode<ItemType>* newNode);
-   BinaryNode<ItemType>* removeValue(BinaryNode<ItemType>* subTreePtr,
-                                     const ItemType target,
-                                     bool* success);
-   BinaryNode<ItemType>* removeNode(BinaryNode<ItemType>* nodePtr;);
-   BinaryNode<ItemType>* removeLeftmostNode(
-      BinaryNode<ItemType>* subTreePtr, ItemType& inorderSuccessor);
+	// Places a given new node at its proper position in this binary
+   // search tree
 
+   auto placeNode ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
+                     std::shared_ptr<BinaryNode<ItemType>> newNode;
 
+   //Removes the given target value from the tree while maintaing a 
+   //binary search tree
+   auto removeValue ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
+                        const ItemType target ,
+                        bool& isSuccessful ) override;
+  
+   //Removes a given node from a tree while maintaing a binary search tree
+   auto removeNode ( std::shared_ptr<BinaryNode<ItemType>> nodePtr );
+
+   //Removes the leftmost node in the left subtree of the node
+   //pointed to by nodePtr.
+   //Sets inorderSuccessor to the value in this node.
+   //Returns a pointer to the revised subtree
+   auto removeLeftmostNode ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
+                              ItemType& inorderSuccessor );
+
+   //Returns a pointer to the node containing the given value
+   //or nullptr if not found
+   auto findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr ,
+                     const ItemType& target ) const;
+
+public:
+   //---------------------------------------------------------------------------
+   //    Constructor and Destructor Section
+   //---------------------------------------------------------------------------
+   BinarySearchTree ( );
+   BinarySearchTree ( const ItemType& rootItem );
+   BinarySearchTree ( const BinarySearchTree<ItemType>& tree );
+   ~BinarySearchTree ( );
+
+   //---------------------------------------------------------------------------
+   //    Public Methods Section
+   //---------------------------------------------------------------------------
+   bool isEmpty ( ) const;
+   int getHeight ( ) const;
+   int getNumberOfNodes ( ) const;
+   ItemType getRootData ( ) const;
+   void setRootData ( const ItemType& newData );
+   bool add ( const ItemType& newEntry );
+   bool remove ( const ItemType& target );
+   void clear ( );
+   ItemType getEntry ( const ItemType& anEntry );
+   bool contains ( const ItemType& anEntry ) const;
+
+   //---------------------------------------------------------------------------
+   //    Public Traversals Section
+   //---------------------------------------------------------------------------
+   void preorderTraverse ( void visit ( ItemType& ) ) const;
+   vooid inorderTraverse ( void visit ( ItemType& ) ) const;
+   void postorderTraverse ( void visit ( ItemType& ) ) const;
+
+   //---------------------------------------------------------------------------
+   //    Overloaded Operator Section
+   //---------------------------------------------------------------------------
+   BinarySearchTree<ItemType>&
+      operator=( const BinarySearchTree<ItemType>& rightHandSide );
 };
 
 #endif
