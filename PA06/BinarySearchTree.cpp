@@ -15,5 +15,17 @@
 #include "BinarySearchTree.h"
 
 //Overloaded operator
-inline BinarySearchTree<ItemType>& BinarySearchTree<ItemType>::
-         operator=( const BinarySearchTree<ItemType>& rightHandSide );
+template <class ItemType>
+BinarySearchTree<ItemType>::
+      operator=(const BinarySearchTree<ItemType>& rightHandSide)
+{
+   //Check for self-assignment
+   if (this == &rightHandSide)
+   {
+      return *this;
+   }
+   else //assign data
+   {
+
+   }
+}

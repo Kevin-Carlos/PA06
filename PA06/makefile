@@ -8,7 +8,7 @@ CC=g++
 CXXFLAGS = -g -Wall -std=c++11
 
 # Source files
-SOURCES = BinarySearchTree.cpp
+SOURCES = BinarySearchTree.cpp PA06.cpp
 
 # header file dependencies
 HEADERS = BinarySearchTree.h
