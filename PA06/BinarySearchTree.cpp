@@ -13,6 +13,9 @@
 
 //Header Files
 #include "BinarySearchTree.h"
+#include <iostream>
+
+using namespace std;
 
 
    //---------------------------------------------------------------------------
@@ -39,6 +42,27 @@ BinarySearchTree::~BinarySearchTree()
 }
 
    //---------------------------------------------------------------------------
+   //		Protected Utility Methods Section:
+   //		Recursive helper methods for the public methods.
+   //---------------------------------------------------------------------------
+
+auto BinarySearchTree::placeNode ( BinaryNode* subTreePtr , 
+   BinaryNode* newNode ) 
+   -> decltype ( subTreePtr )
+{
+   //If empty, add new entry as root
+   if ( isEmpty ( ) )
+   {
+      return newNode;
+   }
+   else if (subTreePtr->getItem ( ) > newNode->getItem ( ))
+   {
+
+   }
+
+   return subTreePtr;
+}
+   //---------------------------------------------------------------------------
    //    Public Methods Section
    //---------------------------------------------------------------------------
 bool BinarySearchTree::isEmpty ( ) const
@@ -60,20 +84,10 @@ void BinarySearchTree::setRootData ( const int& newData )
 
 bool BinarySearchTree::add ( const int& newEntry )
 {
-   bool flag = false;
-
-   //If empty, add new entry as root
-   if ( isEmpty ( ) )
-   {
-      setRootData ( newEntry );
-      flag = true;
-   }
-   // Find the position to insert entry
-   else
-   {
-      flag = true;
-   }
-   return flag;
+   BinaryNode* newNodePtr = new BinaryNode ( newEntry );
+   rootPtr = placeNode ( rootPtr , newNodePtr );
+   std::cout << "rootPtr: " << rootPtr->data << std::endl;
+   return true;
 }
 
 

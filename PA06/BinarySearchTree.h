@@ -25,6 +25,25 @@ private:
    {
       int data;
       int* left, *right;
+      
+      // Default Constructor
+      BinaryNode ( )
+      {
+         data = 0;
+         left = right = nullptr;
+      }
+
+      //Parameterized constructor
+      BinaryNode ( int entry )
+      {
+         data = entry;
+      }
+
+      //Getter function
+      int getItem ( )
+      {
+         return data;
+      }
    };
 
    BinaryNode* rootPtr;
@@ -37,8 +56,8 @@ protected:
 	// Places a given new node at its proper position in this binary
    // search tree
 
-//   auto placeNode ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
-//                     std::shared_ptr<BinaryNode<ItemType>> newNode;
+   auto placeNode ( BinaryNode* subTreePtr , BinaryNode* newNode ) 
+      -> decltype ( subTreePtr );
 //
 //   //Removes the given target value from the tree while maintaing a 
 //   //binary search tree
@@ -79,17 +98,17 @@ public:
    int getRootData ( ) const;
    void setRootData ( const int& newData );
    bool add ( const int& newEntry );
-//   bool remove ( const ItemType& target );
+//   bool remove ( const int& target );
    void clear ( );
-//   ItemType getEntry ( const ItemType& anEntry );
-//   bool contains ( const ItemType& anEntry ) const;
+//   ItemType getEntry ( const int& anEntry );
+//   bool contains ( const int& anEntry ) const;
 //
 //   //---------------------------------------------------------------------------
 //   //    Public Traversals Section
 //   //---------------------------------------------------------------------------
-//   void preorderTraverse ( void visit ( ItemType& ) ) const;
-//   void inorderTraverse ( void visit ( ItemType& ) ) const;
-//   void postorderTraverse ( void visit ( ItemType& ) ) const;
+//   void preorderTraverse ( void visit ( int& ) ) const;
+//   void inorderTraverse ( void visit ( int& ) ) const;
+//   void postorderTraverse ( void visit ( int& ) ) const;
 
 };
 #endif

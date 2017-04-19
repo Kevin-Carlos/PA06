@@ -8,5 +8,7 @@ using std::cout;
 
 int main ( )
 {
+   BinarySearchTree tree;
+   tree.add ( 5 );
    return 0;
 }
