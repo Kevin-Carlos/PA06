@@ -24,7 +24,7 @@ private:
    struct BinaryNode
    {
       int data;
-      int* left, *right;
+      BinaryNode *left, *right;
       
       // Default Constructor
       BinaryNode ( )
@@ -39,10 +39,31 @@ private:
          data = entry;
       }
 
-      //Getter function
+      //Getter Functions
+      BinaryNode* getLeftChildPtr ( ) const
+      {
+         return left;
+      }
+
+      BinaryNode* getRightChildPtr ( ) const
+      {
+         return right;
+      }
+
       int getItem ( )
       {
          return data;
+      }
+
+      //Setter Functions
+      void setLeftChildPtr ( BinaryNode* leftPtr )
+      {
+         left = leftPtr;
+      }
+    
+      void setRightChildPtr ( BinaryNode* rightPtr )
+      {
+         right = rightPtr;
       }
    };
 

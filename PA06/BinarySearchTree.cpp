@@ -47,17 +47,22 @@ BinarySearchTree::~BinarySearchTree()
    //---------------------------------------------------------------------------
 
 auto BinarySearchTree::placeNode ( BinaryNode* subTreePtr , 
-   BinaryNode* newNode ) 
-   -> decltype ( subTreePtr )
+   BinaryNode* newNode ) -> decltype ( subTreePtr )
 {
    //If empty, add new entry as root
    if ( isEmpty ( ) )
    {
       return newNode;
    }
-   else if (subTreePtr->getItem ( ) > newNode->getItem ( ))
+   else if ( subTreePtr->getItem ( ) > newNode->getItem ( ) )
    {
-
+      tempPtr = placeNode ( subTreePtr->getLeftChildPtr ( ) , newNode );
+      subTreePtr->setLeftChildPtr ( tempPtr );
+   }
+   else
+   {
+      tempPtr = placeNode ( subTreePtr->getRightChildPtr ( ) , newNode );
+      subTreePtr->setRightChildPtr ( tempPtr );
    }
 
    return subTreePtr;
