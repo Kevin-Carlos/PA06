@@ -17,6 +17,7 @@
 
 // Header Files ////////////////////////////////////////////////////////////////
 #include <memory>
+#include <iostream>
 
 class BinarySearchTree
 {
@@ -24,7 +25,8 @@ private:
    struct BinaryNode
    {
       int data;
-      BinaryNode *left, *right;
+      BinaryNode *left, 
+         *right;
       
       // Default Constructor
       BinaryNode ( )
@@ -116,6 +118,8 @@ public:
    bool isEmpty ( ) const;
 //   int getHeight ( ) const;
 //   int getNumberOfNodes ( ) const;
+   int getRightData ( ) const;
+   int getLeftData ( ) const;
    int getRootData ( ) const;
    void setRootData ( const int& newData );
    bool add ( const int& newEntry );
