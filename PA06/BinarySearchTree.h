@@ -18,15 +18,16 @@
 // Header Files ////////////////////////////////////////////////////////////////
 #include <memory>
 
-#include "BinarySearchTree.cpp"
-
-//Template declaration
-typedef BinarySearchTree<int> searchTree;
-
-template<class ItemType>
 class BinarySearchTree
 {
-private: BinaryNode<ItemType>* rootPtr;
+private: 
+   struct BinaryNode
+   {
+      int data;
+      int* left, *right;
+   };
+
+   BinaryNode* rootPtr;
 
 protected:
 	//--------------------------------------------------------------------------
@@ -60,26 +61,26 @@ protected:
 //   auto findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr ,
 //                     const ItemType& target ) const;
 //
-//public:
+public:
 //   //---------------------------------------------------------------------------
 //   //    Constructor and Destructor Section
 //   //---------------------------------------------------------------------------
-//   BinarySearchTree ( );
-//   BinarySearchTree ( const ItemType& rootItem );
-//   BinarySearchTree ( const BinarySearchTree<ItemType>& tree );
-//   ~BinarySearchTree ( );
+   BinarySearchTree ( );
+   BinarySearchTree ( const int& rootItem );
+//   BinarySearchTree ( const BinarySearchTree& tree );
+   ~BinarySearchTree ( );
 //
 //   //---------------------------------------------------------------------------
 //   //    Public Methods Section
 //   //---------------------------------------------------------------------------
-//   bool isEmpty ( ) const;
+   bool isEmpty ( ) const;
 //   int getHeight ( ) const;
 //   int getNumberOfNodes ( ) const;
-//   ItemType getRootData ( ) const;
-//   void setRootData ( const ItemType& newData );
-//   bool add ( const ItemType& newEntry );
+   int getRootData ( ) const;
+   void setRootData ( const int& newData );
+   bool add ( const int& newEntry );
 //   bool remove ( const ItemType& target );
-//   void clear ( );
+   void clear ( );
 //   ItemType getEntry ( const ItemType& anEntry );
 //   bool contains ( const ItemType& anEntry ) const;
 //
@@ -90,9 +91,5 @@ protected:
 //   void inorderTraverse ( void visit ( ItemType& ) ) const;
 //   void postorderTraverse ( void visit ( ItemType& ) ) const;
 
-   //---------------------------------------------------------------------------
-   //    Overloaded Operator Section
-   //---------------------------------------------------------------------------
-   operator=( const BinarySearchTree<ItemType>& rightHandSide );
 };
 #endif

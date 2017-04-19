@@ -14,18 +14,75 @@
 //Header Files
 #include "BinarySearchTree.h"
 
-//Overloaded operator
-template <class ItemType>
-BinarySearchTree<ItemType>::
-      operator=(const BinarySearchTree<ItemType>& rightHandSide)
-{
-   //Check for self-assignment
-   if (this == &rightHandSide)
-   {
-      return *this;
-   }
-   else //assign data
-   {
 
+   //---------------------------------------------------------------------------
+   //    Constructor and Destructor Section
+   //---------------------------------------------------------------------------
+
+// Default Constructor
+BinarySearchTree::BinarySearchTree( )
+{
+   rootPtr = nullptr; 
+}
+
+//Copy Constructor
+BinarySearchTree::BinarySearchTree( const int& rootItem )
+{
+   rootPtr = new BinaryNode;
+   rootPtr->data = rootItem;
+}
+
+//Destructor
+BinarySearchTree::~BinarySearchTree()
+{
+   clear();
+}
+
+   //---------------------------------------------------------------------------
+   //    Public Methods Section
+   //---------------------------------------------------------------------------
+bool BinarySearchTree::isEmpty ( ) const
+{
+   return ( rootPtr == nullptr );
+}
+
+int BinarySearchTree::getRootData ( ) const
+{
+   return rootPtr->data;
+}
+
+void BinarySearchTree::setRootData ( const int& newData )
+{
+   rootPtr->data = newData;
+   rootPtr->left = NULL;
+   rootPtr->right = NULL;
+}
+
+bool BinarySearchTree::add ( const int& newEntry )
+{
+   bool flag = false;
+
+   //If empty, add new entry as root
+   if ( isEmpty ( ) )
+   {
+      setRootData ( newEntry );
+      flag = true;
    }
+   // Find the position to insert entry
+   else
+   {
+      flag = true;
+   }
+   return flag;
+}
+
+
+void BinarySearchTree::clear ( )
+{
+   //BinaryNode* tempPtr;
+
+   //while ( tempPtr != nullptr )
+   //{
+     // tempPtr = rootPtr;
+   //}
 }
