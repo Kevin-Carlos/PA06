@@ -25,10 +25,17 @@ int main ( )
    tree.add ( 6 );
    tree.add ( 2 );
    tree.add ( 12 );
-   tree.add ( 1 );   
-   tree.add ( 99 );
-   tree.add ( 8 );
-   tree.add ( 4 );
+   //tree.add ( 1 );   
+   //tree.add ( 99 );
+   //tree.add ( 8 );
+   //tree.add ( 4 );
+
+   std::cout << "Print preorder: \n";
+   tree.printPreOrder ( );
+   std::cout << "Print inorder: \n";
+   tree.printInOrder ( );
+   std::cout << "Print postorder: \n";
+   tree.printPostOrder ( );
 
    std::cout << "Root: " << tree.getRootData ( ) << std::endl;
    std::cout << "Right: " << tree.getRightData ( ) << std::endl;

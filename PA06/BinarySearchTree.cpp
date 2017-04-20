@@ -119,3 +119,60 @@ void BinarySearchTree::clear ( )
    // tempPtr = rootPtr;
    //}
 }
+
+void BinarySearchTree::preorderTraverse ( BinaryNode* ptr ) const
+{
+   if (ptr == nullptr)
+   {
+      return;
+   }
+
+   std::cout << ptr->data << std::endl;
+   preorderTraverse ( ptr->left );
+   //std::cout << "Went left...\n";
+   preorderTraverse ( ptr->right );
+   //std::cout << "Went right...\n";
+}
+
+void BinarySearchTree::inorderTraverse ( BinaryNode* ptr ) const
+{
+   if (ptr == nullptr)
+   {
+      return;
+   }
+
+   inorderTraverse ( ptr->left );
+   //std::cout << "Went left...\n";
+   std::cout << ptr->data << std::endl;
+   inorderTraverse ( ptr->right );
+   //std::cout << "Went right...\n";
+}
+
+void BinarySearchTree::postorderTraverse ( BinaryNode* ptr ) const
+{
+   if (ptr == nullptr)
+   {
+      return;
+   }
+
+   postorderTraverse ( ptr->left );
+   //std::cout << "Went left...\n";
+   postorderTraverse ( ptr->right );
+   //std::cout << "Went right...\n";
+   std::cout << ptr->data << std::endl;
+}
+
+void BinarySearchTree::printPreOrder ( )
+{
+   preorderTraverse ( rootPtr );
+}
+
+void BinarySearchTree::printInOrder ( )
+{
+   inorderTraverse ( rootPtr );
+}
+
+void BinarySearchTree::printPostOrder ( )
+{
+   postorderTraverse ( rootPtr );
+}

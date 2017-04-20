@@ -132,9 +132,12 @@ public:
    //   //---------------------------------------------------------------------------
    //   //    Public Traversals Section
    //   //---------------------------------------------------------------------------
-   //   void preorderTraverse ( void visit ( int& ) ) const;
-   //   void inorderTraverse ( void visit ( int& ) ) const;
-   //   void postorderTraverse ( void visit ( int& ) ) const;
+   void preorderTraverse ( BinaryNode* ptr ) const;
+   void inorderTraverse ( BinaryNode* ptr ) const;
+   void postorderTraverse ( BinaryNode* ptr ) const;
+   void printPreOrder ( );
+   void printInOrder ( );
+   void printPostOrder ( );
 
 };
 #endif
