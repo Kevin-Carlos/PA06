@@ -1,14 +1,14 @@
 // Class Implementation File ///////////////////////////////////////////////////
 /**
-  * @file BinarySearchTree.cpp
-  *
-  * @details Implementation file for the BinarySearchTree class
-  *
-  * @version 1.00 
-  *          Kevin Carlos (12 April 2017)
-  *          Initial Implementation
-  *
-  * @notes none
+* @file BinarySearchTree.cpp
+*
+* @details Implementation file for the BinarySearchTree class
+*
+* @version 1.00
+*          Kevin Carlos (12 April 2017)
+*          Initial Implementation
+*
+* @notes none
 */
 
 //Header Files
@@ -23,22 +23,22 @@ using namespace std;
    //---------------------------------------------------------------------------
 
 // Default Constructor
-BinarySearchTree::BinarySearchTree( )
+BinarySearchTree::BinarySearchTree ( )
 {
-   rootPtr = nullptr; 
+   rootPtr = nullptr;
 }
 
 //Copy Constructor
-BinarySearchTree::BinarySearchTree( const int& rootItem )
+BinarySearchTree::BinarySearchTree ( const int& rootItem )
 {
    rootPtr = new BinaryNode;
    rootPtr->data = rootItem;
 }
 
 //Destructor
-BinarySearchTree::~BinarySearchTree()
+BinarySearchTree::~BinarySearchTree ( )
 {
-   clear();
+   clear ( );
 }
 
    //---------------------------------------------------------------------------
@@ -46,37 +46,31 @@ BinarySearchTree::~BinarySearchTree()
    //		Recursive helper methods for the public methods.
    //---------------------------------------------------------------------------
 
-auto BinarySearchTree::placeNode ( BinaryNode* subTreePtr , 
+auto BinarySearchTree::placeNode ( BinaryNode* subTreePtr ,
    BinaryNode* newNode ) -> decltype ( subTreePtr )
 {
-   BinaryNode* tempPtr;
-   int newEntry;
-
    //If empty, add new entry as root
-   if ( isEmpty ( ) )
+   if (subTreePtr == nullptr)
    {
       return newNode;
    }
-   else if ( subTreePtr->getItem ( ) > newNode->getItem ( ) )
+   //If root > newEntry
+   else if (subTreePtr->getItem ( ) > newNode->getItem ( ))
    {
-      newEntry = newNode->getItem ( );
-      rootPtr->left = new BinaryNode ( newEntry );
-      tempPtr = placeNode ( subTreePtr->getLeftChildPtr ( ) , newNode );
-      subTreePtr->setLeftChildPtr ( tempPtr );
+      subTreePtr->left = placeNode ( subTreePtr->left , newNode );
+   }
+   else if (subTreePtr->getItem ( ) < newNode->getItem ( ))
+   {
+      subTreePtr->right = placeNode ( subTreePtr->right , newNode );
    }
    else
    {
-      if ( rootPtr->right == nullptr )
-      {
-         newEntry = newNode->getItem ( );
-         rootPtr->right = new BinaryNode ( newEntry );
-         tempPtr = placeNode ( subTreePtr->getRightChildPtr ( ) , newNode );
-         subTreePtr->setRightChildPtr ( tempPtr );
-      }
+      std::cout << "Cry..." << std::endl;
    }
-
    return subTreePtr;
 }
+
+
    //---------------------------------------------------------------------------
    //    Public Methods Section
    //---------------------------------------------------------------------------
@@ -109,7 +103,8 @@ int BinarySearchTree::getLeftData ( ) const
 
 bool BinarySearchTree::add ( const int& newEntry )
 {
-   BinaryNode* newNodePtr = new BinaryNode ( newEntry );
+   BinaryNode* newNodePtr = new BinaryNode ( );
+   newNodePtr->data = newEntry;
    rootPtr = placeNode ( rootPtr , newNodePtr );
    return true;
 }
@@ -121,6 +116,6 @@ void BinarySearchTree::clear ( )
 
    //while ( tempPtr != nullptr )
    //{
-     // tempPtr = rootPtr;
+   // tempPtr = rootPtr;
    //}
 }
