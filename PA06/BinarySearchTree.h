@@ -108,10 +108,10 @@ protected:
    //   auto removeLeftmostNode ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
    //                              ItemType& inorderSuccessor );
    //
-   //   //Returns a pointer to the node containing the given value
-   //   //or nullptr if not found
-   //   auto findNode ( std::shared_ptr<BinaryNode<ItemType>> treePtr ,
-   //                     const ItemType& target ) const;
+   //Returns a pointer to the node containing the given value
+   //or nullptr if not found
+   auto findNode ( BinaryNode* treePtr , const int& target ) const 
+      -> decltype ( treePtr );
    //
 public:
    //   //---------------------------------------------------------------------------
@@ -133,10 +133,10 @@ public:
    int getRootData ( ) const;
    void setRootData ( const int& newData );
    bool add ( const int& newEntry );
-   //   bool remove ( const int& target );
+   bool remove ( const int& target );
    void clear ( );
-   //   ItemType getEntry ( const int& anEntry );
-   //   bool contains ( const int& anEntry ) const;
+   int getEntry ( const int& anEntry );
+   bool contains ( const int& anEntry ) const;
    //
    //   //---------------------------------------------------------------------------
    //   //    Public Traversals Section

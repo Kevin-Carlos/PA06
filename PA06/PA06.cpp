@@ -17,9 +17,11 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 
 int main ( )
 {
+   int choice;
    BinarySearchTree tree;
    tree.add ( 11 );
    tree.add ( 6 );
@@ -30,12 +32,17 @@ int main ( )
    //tree.add ( 8 );
    //tree.add ( 4 );
 
-   std::cout << "Print preorder: \n";
+   cout << "Print preorder: \n";
    tree.printPreOrder ( );
-   std::cout << "Print inorder: \n";
+   cout << "Print inorder: \n";
    tree.printInOrder ( );
-   std::cout << "Print postorder: \n";
+   cout << "Print postorder: \n";
    tree.printPostOrder ( );
+
+   cout << "Value to remove: ";
+   cin >> choice;
+   tree.remove ( choice );
+
 
    return 0;
 }

@@ -76,16 +76,17 @@ auto BinarySearchTree::placeNode ( BinaryNode* subTreePtr ,
    {
       return newNode;
    }
-   //If root > newEntry
+   //If root > newEntry place the item on the left side of tree
    else if (subTreePtr->getItem ( ) > newNode->getItem ( ))
    {
       subTreePtr->left = placeNode ( subTreePtr->left , newNode );
    }
+   //if root < newEntry place the item on the right side fo the tree
    else if (subTreePtr->getItem ( ) < newNode->getItem ( ))
    {
       subTreePtr->right = placeNode ( subTreePtr->right , newNode );
    }
-   else
+   else //Error
    {
       std::cout << "Cry..." << std::endl;
    }
@@ -193,6 +194,72 @@ void BinarySearchTree::clear ( )
 }
 
 /**
+  * @function remove
+  *
+  * @details A boolean to tell whether or not the remove was successful
+  *
+  * @param[in] target
+  *               The item to be looked for and removed
+  *
+  * @post the target removed and leafs shifted to maintain the tree
+*/
+bool BinarySearchTree::remove ( const int & target )
+{
+   bool flag;
+
+   //Does the tree contain the target?
+   getEntry ( target );
+
+
+   return flag;
+}
+
+/**
+  *
+  *
+  *
+  *
+  *
+*/
+int BinarySearchTree::getEntry ( const int& anEntry )
+{
+   BinaryNode* tempPtr; //hold the ptr
+
+   tempPtr = findNode ( rootPtr , anEntry );
+
+}
+
+/**
+  *
+  *
+  *
+  *
+  *
+*/
+auto BinarySearchTree::findNode ( BinaryNode* treePtr , const int& target ) 
+      const -> decltype ( treePtr )
+{
+   return treePtr;
+}
+
+/**
+  * @function contains
+  *
+  * @details To find whether or not the item is in the tree
+  *
+  * @param[in] entry passed in from remove to find the desired removal item
+*/
+bool BinarySearchTree::contains ( const int & anEntry ) const
+{
+
+
+}
+
+//------------------------------------------------------------------------------
+//    Public Traversals
+//------------------------------------------------------------------------------
+
+/**
   * @function preorderTraverse
   * 
   * @details traverses the tree and couts in a preorder manner
@@ -263,7 +330,7 @@ void BinarySearchTree::postorderTraverse ( BinaryNode* ptr ) const
 
 //------------------------------------------------------------------------------
 //    Relatively Useless functions used for specific traversals
-//    ----Need to do this a better way
+//    ****Need to do this a better way
 //------------------------------------------------------------------------------
 
 void BinarySearchTree::printPreOrder ( )
