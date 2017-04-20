@@ -37,9 +37,5 @@ int main ( )
    std::cout << "Print postorder: \n";
    tree.printPostOrder ( );
 
-   std::cout << "Root: " << tree.getRootData ( ) << std::endl;
-   std::cout << "Right: " << tree.getRightData ( ) << std::endl;
-   std::cout << "Left: " << tree.getLeftData ( ) << std::endl;
-
    return 0;
 }

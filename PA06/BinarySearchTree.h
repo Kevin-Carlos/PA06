@@ -3,6 +3,15 @@
 * @file BinarySearchTree.h
 *
 * @details Link-based implementation of the ADT binary search tree.
+
+* @version 1.03
+*          +Implementation of traversals and work arounds to print them
+*
+* @version 1.02
+*          +Set and gets for binary node
+*
+* @version 1.01
+*          +Several constructors, isEmpty, getRootData, setRootData
 *
 * @version 1.00
 *			 Kevin Carlos (12 April 2017)
