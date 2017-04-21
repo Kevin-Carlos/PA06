@@ -227,6 +227,7 @@ int BinarySearchTree::getEntry ( const int& anEntry )
 
    tempPtr = findNode ( rootPtr , anEntry );
 
+   return anEntry;
 }
 
 /**
@@ -249,11 +250,20 @@ auto BinarySearchTree::findNode ( BinaryNode* treePtr , const int& target )
   *
   * @param[in] entry passed in from remove to find the desired removal item
 */
-bool BinarySearchTree::contains ( const int & anEntry ) const
-{
-
-
-}
+//bool BinarySearchTree::contains ( const int & anEntry ) const
+//{
+//   inorderTraverse ( rootPtr );
+//   if ( rootPtr->data == anEntry )
+//   {
+//      std::cout << "Success!\n";
+//      return true;
+//   }
+//   else {
+//      std::cout << "Falso!\n";
+//      return false;
+//   }
+//
+//}
 
 //------------------------------------------------------------------------------
 //    Public Traversals
