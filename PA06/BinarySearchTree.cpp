@@ -112,6 +112,17 @@ bool BinarySearchTree::isEmpty ( ) const
 }
 
 /**
+  * @function getHeight
+  *
+  * @details returns the height of the tree
+  *
+*/
+int BinarySearchTree::getHeight ( ) const
+{
+   return treeHeight;
+}
+
+/**
   * @function getRootData
   *
   * @details returns the data held by rootPtr
@@ -171,6 +182,7 @@ bool BinarySearchTree::add ( const int& newEntry )
    BinaryNode* newNodePtr = new BinaryNode ( );
    newNodePtr->data = newEntry;
    rootPtr = placeNode ( rootPtr , newNodePtr );
+   treeHeight++;
    return true;
 }
 
@@ -206,10 +218,28 @@ void BinarySearchTree::clear ( )
 bool BinarySearchTree::remove ( const int & target )
 {
    bool flag;
+   BinaryNode* tempPtr;
 
-   //Does the tree contain the target?
-   getEntry ( target );
+   std::cout << "In remove...\n";
 
+   //Case 1: if root is null
+   if ( rootPtr == nullptr )
+   {
+      flag = false; //Nothing to remove
+   }
+   //Case 2: if root is the target
+   else if ( rootPtr->data == target )
+   {
+      std::cout << "Root is target...\n";
+      flag = true;
+   }
+   //Else search the tree for the node
+   else
+   {
+      tempPtr = findNode ( rootPtr , target );
+      std::cout << "Going to removeNode...\n";
+      removeNode ( tempPtr );
+   }
 
    return flag;
 }
@@ -221,14 +251,14 @@ bool BinarySearchTree::remove ( const int & target )
   *
   *
 */
-int BinarySearchTree::getEntry ( const int& anEntry )
-{
-   BinaryNode* tempPtr; //hold the ptr
-
-   tempPtr = findNode ( rootPtr , anEntry );
-
-   return anEntry;
-}
+//int BinarySearchTree::getEntry ( const int& anEntry )
+//{
+//   BinaryNode* tempPtr; //hold the ptr
+//
+//   tempPtr = findNode ( rootPtr , anEntry );
+//
+//   return anEntry;
+//}
 
 /**
   *
@@ -237,9 +267,47 @@ int BinarySearchTree::getEntry ( const int& anEntry )
   *
   *
 */
+void BinarySearchTree::removeNode ( BinaryNode* nodePtr )
+{
+   std::cout << "In removeNode...\n";
+
+   delete nodePtr;
+}
+
+/**
+  * @function findNode
+  *
+  * @details Helper function that iteratively searches through the tree while 
+  *                the ptr does not equal the target integer
+  *
+  * @param[in] treePtr - passed in as rootPtr
+  *
+  * @param[in] target - the target we're searching for
+  *
+  * @returns the ptr to the node containing the target value
+  *
+*/
 auto BinarySearchTree::findNode ( BinaryNode* treePtr , const int& target ) 
       const -> decltype ( treePtr )
 {
+   //While the tree node data does not equal target
+   while ( treePtr->data != target )
+   {
+      //Go left if the target is less than the npde
+      if ( target < treePtr->data )
+      {
+         treePtr = treePtr->left;
+      }
+      //Go right if the target is greater than the npde
+      else if ( target > treePtr->data )
+      {
+         treePtr = treePtr->right;
+      }
+      else
+      {
+         std::cout << "Bruh...tragedy...\n";
+      }
+   }
    return treePtr;
 }
 

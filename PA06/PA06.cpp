@@ -43,6 +43,11 @@ int main ( )
    cin >> choice;
    tree.remove ( choice );
 
+   cout << "After remove: \n";
+   tree.printPreOrder ( );
+
+   cout << "Height of tree: " << tree.getHeight ( ) << endl;
+
 
    return 0;
 }

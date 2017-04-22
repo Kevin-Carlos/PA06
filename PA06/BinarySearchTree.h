@@ -53,7 +53,6 @@ private:
       //Getter Functions
       BinaryNode* getLeftChildPtr ( ) const
       {
-         std::cout << "left ptr: " << left << std::endl;
          return left;
       }
 
@@ -80,53 +79,54 @@ private:
    };
 
    BinaryNode* rootPtr;
+   int treeHeight = 0;
 
 protected:
    //--------------------------------------------------------------------------
    //		Protected Utility Methods Section:
    //		Recursive helper methods for the public methods.
    //--------------------------------------------------------------------------
+   
    // Places a given new node at its proper position in this binary
    // search tree
-
    auto placeNode ( BinaryNode* subTreePtr , BinaryNode* newNode )
       -> decltype ( subTreePtr );
-   //
-   //   //Removes the given target value from the tree while maintaing a 
-   //   //binary search tree
+
+   //Removes the given target value from the tree while maintaing a 
+   //binary search tree
    //   auto removeValue ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
    //                        const ItemType target ,
    //                        bool& isSuccessful ) override;
-   //  
-   //   //Removes a given node from a tree while maintaing a binary search tree
-   //   auto removeNode ( std::shared_ptr<BinaryNode<ItemType>> nodePtr );
-   //
-   //   //Removes the leftmost node in the left subtree of the node
-   //   //pointed to by nodePtr.
-   //   //Sets inorderSuccessor to the value in this node.
-   //   //Returns a pointer to the revised subtree
+
+   //Removes a given node from a tree while maintaing a binary search tree
+   void removeNode ( BinaryNode* nodePtr );
+
+   //Removes the leftmost node in the left subtree of the node
+   //pointed to by nodePtr.
+   //Sets inorderSuccessor to the value in this node.
+   //Returns a pointer to the revised subtree
    //   auto removeLeftmostNode ( std::shared_ptr<BinaryNode<ItemType>> subTreePtr ,
    //                              ItemType& inorderSuccessor );
-   //
+
    //Returns a pointer to the node containing the given value
    //or nullptr if not found
    auto findNode ( BinaryNode* treePtr , const int& target ) const 
       -> decltype ( treePtr );
-   //
+
 public:
-   //   //---------------------------------------------------------------------------
-   //   //    Constructor and Destructor Section
-   //   //---------------------------------------------------------------------------
+   //---------------------------------------------------------------------------
+   //    Constructor and Destructor Section
+   //---------------------------------------------------------------------------
    BinarySearchTree ( );
    BinarySearchTree ( const int& rootItem );
    //   BinarySearchTree ( const BinarySearchTree& tree );
    ~BinarySearchTree ( );
-   //
-   //   //---------------------------------------------------------------------------
-   //   //    Public Methods Section
-   //   //---------------------------------------------------------------------------
+
+   //---------------------------------------------------------------------------
+   //    Public Methods Section
+   //---------------------------------------------------------------------------
    bool isEmpty ( ) const;
-   //   int getHeight ( ) const;
+   int getHeight ( ) const;
    //   int getNumberOfNodes ( ) const;
    int getRightData ( ) const;
    int getLeftData ( ) const;
@@ -135,12 +135,12 @@ public:
    bool add ( const int& newEntry );
    bool remove ( const int& target );
    void clear ( );
-   int getEntry ( const int& anEntry );
-   bool contains ( const int& anEntry ) const;
-   //
-   //   //---------------------------------------------------------------------------
-   //   //    Public Traversals Section
-   //   //---------------------------------------------------------------------------
+   //int getEntry ( const int& anEntry );
+   //bool contains ( const int& anEntry ) const;
+
+   //---------------------------------------------------------------------------
+   //    Public Traversals Section
+   //---------------------------------------------------------------------------
    void preorderTraverse ( BinaryNode* ptr ) const;
    void inorderTraverse ( BinaryNode* ptr ) const;
    void postorderTraverse ( BinaryNode* ptr ) const;
