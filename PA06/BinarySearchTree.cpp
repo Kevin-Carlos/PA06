@@ -357,7 +357,7 @@ void BinarySearchTree::preorderTraverse ( BinaryNode* ptr ) const
       return;
    }
 
-   std::cout << ptr->data << std::endl;
+   std::cout << ptr->data << ", ";
    preorderTraverse ( ptr->left );
    //std::cout << "Went left...\n";
    preorderTraverse ( ptr->right );
@@ -382,7 +382,7 @@ void BinarySearchTree::inorderTraverse ( BinaryNode* ptr ) const
 
    inorderTraverse ( ptr->left );
    //std::cout << "Went left...\n";
-   std::cout << ptr->data << std::endl;
+   std::cout << ptr->data << ", ";
    inorderTraverse ( ptr->right );
    //std::cout << "Went right...\n";
 }
@@ -407,7 +407,7 @@ void BinarySearchTree::postorderTraverse ( BinaryNode* ptr ) const
    //std::cout << "Went left...\n";
    postorderTraverse ( ptr->right );
    //std::cout << "Went right...\n";
-   std::cout << ptr->data << std::endl;
+   std::cout << ptr->data << ", ";
 }
 
 //------------------------------------------------------------------------------

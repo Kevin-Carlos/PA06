@@ -4,6 +4,9 @@
   *
   * @details Driver file to run and test the Binary Search Tree class
   *
+  * @version 1.01
+  *          +Added RNG of unique values and insertion into a vector
+  *
   * @version 1.00 
   *          Kevin Carlos (19 April 2017)
   *          Initial Development
@@ -14,7 +17,6 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
-#include <algorithm>
 
 #include "BinarySearchTree.h"
 
@@ -23,63 +25,110 @@ using std::cout;
 using std::endl;
 
 //Function Protoypes ///////////////////////////////////////////////////////////
-void case1 ( std::vector<int>& );
+void randNumCreator ( std::vector<int>&, const int );
 
 int main ( )
 {
    int choice;
-   BinarySearchTree tree;
+   int nums;
+   int numIndex;
+   BinarySearchTree BST1;
+   BinarySearchTree BST2;
    std::vector<int> rngNumsCase1;
+   std::vector<int> indexCreator;
+   std::vector<int> rngNumsCase2;
+   const int MAX_SIZE1 = 100;
+   const int MAX_SIZE2 = 10;
 
    //Seed the RNG
    srand ( time ( NULL ) );
 
+   //---------------------------------------------------------------------------
    //Case 1: 100 unique numbers in the range 1-200
+   //---------------------------------------------------------------------------
+   
+   cout << "\nCASE1 \n";
+   cout << "--------\n";
+
    //Create a vector of above specs
-   case1 ( rngNumsCase1 );
+   randNumCreator ( rngNumsCase1, MAX_SIZE1 );
+   
+   //Add these values to a tree
+   for ( int index = 0; index < MAX_SIZE1; index++ )
+   {
+      nums = rngNumsCase1 [ index ];
+      BST1.add ( nums );
+   }
+   cout << "Height of tree: " << BST1.getHeight ( ) << endl;
+   cout << "BST1 InOrder: ";
+   BST1.printInOrder ( );
+   cout << endl;
 
+   //---------------------------------------------------------------------------
+   //Case 2: Generate 10 values that overlap with BST1 and insert into BST1
+   //---------------------------------------------------------------------------
 
-   tree.add ( 11 );
-   tree.add ( 6 );
-   tree.add ( 2 );
-   tree.add ( 12 );
-   //tree.add ( 1 );   
-   //tree.add ( 99 );
-   //tree.add ( 8 );
-   //tree.add ( 4 );
+   cout << "\nCASE2 \n";
+   cout << "--------\n";
 
-   cout << "Print preorder: \n";
-   tree.printPreOrder ( );
-   cout << "Print inorder: \n";
-   tree.printInOrder ( );
-   cout << "Print postorder: \n";
-   tree.printPostOrder ( );
+   randNumCreator ( indexCreator , MAX_SIZE2 );
+
+   //Create a vector of these values
+   for ( int loopIndex = 0; loopIndex < MAX_SIZE2; loopIndex++ )
+   {
+      numIndex = indexCreator [ loopIndex ];
+      nums = rngNumsCase1.at( numIndex );
+      rngNumsCase2.push_back ( nums );
+   }
+
+   //Add to the tree
+   for ( int loopIndex = 0; loopIndex < MAX_SIZE2; loopIndex++ )
+   {
+      nums = rngNumsCase2 [ loopIndex ];
+      BST2.add ( nums );
+   } 
+   //Print the tree all three ways
+   cout << "BST2 Preorder: "; 
+   BST2.printPreOrder ( );
+   cout << "\nBST2 Inorder: ";
+   BST2.printInOrder ( );
+   cout << "\nBST2 Postorder: ";
+   BST2.printPostOrder ( );
+   cout << endl;
+   
+   //---------------------------------------------------------------------------
+   // Case3: Find and remove any values of BST2 from BST1. Print height, number 
+   // of nodes, and inorder output of the modified BST1 tree.
+   //---------------------------------------------------------------------------
+   
+   cout << "\nCASE3 \n";
+   cout << "--------\n";
 
    cout << "Value to remove: ";
    cin >> choice;
-   tree.remove ( choice );
-
-   cout << "After remove: \n";
-   tree.printPreOrder ( );
-
-   cout << "Height of tree: " << tree.getHeight ( ) << endl;
+   BST1.remove ( choice );
 
 
    return 0;
 }
 
-void case1 ( std::vector<int>& rngNums )
+void randNumCreator ( std::vector<int>& rngNums, const int MAX_SIZE )
 {
    long int numbers;
    int index = 0;
    bool contains;
-   const int MAX_SIZE = 100;
 
    while ( index < MAX_SIZE )
    {
       contains = false;
       //Generate a random number
-      numbers = ( rand ( ) % 200 ) + 1; //Generate numbers within 1-200
+      //if to handle my index creator so i dont go out of bounds
+      if ( MAX_SIZE == 10 )
+      {
+         numbers = ( rand ( ) % 100 ) + 1;
+      }
+      else
+         numbers = ( rand ( ) % 200 ) + 1;
 
       //Check if vector is empty
       if ( rngNums.empty ( ) )
