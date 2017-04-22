@@ -80,6 +80,7 @@ private:
 
    BinaryNode* rootPtr;
    int treeHeight = 0;
+   int numNodes = 0;
 
 protected:
    //--------------------------------------------------------------------------
@@ -127,7 +128,7 @@ public:
    //---------------------------------------------------------------------------
    bool isEmpty ( ) const;
    int getHeight ( ) const;
-   //   int getNumberOfNodes ( ) const;
+   int getNumberOfNodes ( ) const;
    int getRightData ( ) const;
    int getLeftData ( ) const;
    int getRootData ( ) const;

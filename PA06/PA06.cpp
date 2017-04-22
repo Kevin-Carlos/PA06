@@ -4,6 +4,9 @@
   *
   * @details Driver file to run and test the Binary Search Tree class
   *
+  * @version 1.02
+  *          +Created Case 1, 2, and 3
+
   * @version 1.01
   *          +Added RNG of unique values and insertion into a vector
   *
@@ -13,6 +16,7 @@
   *
   * @notes none
 */
+
 // Header Files ////////////////////////////////////////////////////////////////
 #include <iostream>
 #include <vector>
@@ -20,6 +24,7 @@
 
 #include "BinarySearchTree.h"
 
+// Directives //////////////////////////////////////////////////////////////////
 using std::cin;
 using std::cout;
 using std::endl;
@@ -27,11 +32,11 @@ using std::endl;
 //Function Protoypes ///////////////////////////////////////////////////////////
 void randNumCreator ( std::vector<int>&, const int );
 
+//Main Function Implementation /////////////////////////////////////////////////
 int main ( )
 {
-   int choice;
-   int nums;
-   int numIndex;
+   //Variables
+   int nums, numIndex;
    BinarySearchTree BST1;
    BinarySearchTree BST2;
    std::vector<int> rngNumsCase1;
@@ -103,15 +108,30 @@ int main ( )
    
    cout << "\nCASE3 \n";
    cout << "--------\n";
-
-   cout << "Value to remove: ";
-   cin >> choice;
-   BST1.remove ( choice );
-
+   for ( int loopIndex = 0; loopIndex < MAX_SIZE2; loopIndex++ )
+   {
+      nums = rngNumsCase2 [ loopIndex ];
+      BST1.remove ( nums );
+   }
+   //Print height
+   cout << "Height of BST1: " << BST1.getHeight ( ) << endl;
+   //Print # of nodes
+   //numNodes = BST1.getNumberofNodes ( );
+   cout << "# of Nodes: " << BST1.getNumberOfNodes() << endl;
+   //Print inorder
+   cout << "BST1 InOrder: ";
+   BST1.printInOrder ( );
+   cout << endl;
 
    return 0;
 }
 
+/**
+  * @function randNumCreator
+  *
+  * @details generates unique random numbers and puts them into a vector
+  *               and returns that created vector
+*/
 void randNumCreator ( std::vector<int>& rngNums, const int MAX_SIZE )
 {
    long int numbers;
@@ -148,6 +168,8 @@ void randNumCreator ( std::vector<int>& rngNums, const int MAX_SIZE )
             }
          }
       }
+
+      //Push values into vector
       if ( contains == false )
       {
          rngNums.push_back ( numbers );

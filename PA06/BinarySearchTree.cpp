@@ -127,6 +127,17 @@ int BinarySearchTree::getHeight ( ) const
 }
 
 /**
+  * @function getNumberOfNodes
+  *
+  * @details returns the number of nodes in the tree
+  *
+*/
+int BinarySearchTree::getNumberOfNodes ( ) const
+{
+   return numNodes;
+}
+
+/**
   * @function getRootData
   *
   * @details returns the data held by rootPtr
@@ -187,6 +198,7 @@ bool BinarySearchTree::add ( const int& newEntry )
    newNodePtr->data = newEntry;
    rootPtr = placeNode ( rootPtr , newNodePtr );
    treeHeight++;
+   numNodes++;
    return true;
 }
 
@@ -224,8 +236,6 @@ bool BinarySearchTree::remove ( const int & target )
    bool flag;
    BinaryNode* tempPtr;
 
-   std::cout << "In remove...\n";
-
    //Case 1: if root is null
    if ( rootPtr == nullptr )
    {
@@ -241,9 +251,9 @@ bool BinarySearchTree::remove ( const int & target )
    else
    {
       tempPtr = findNode ( rootPtr , target );
-      std::cout << "Going to removeNode...\n";
       removeNode ( tempPtr );
    }
+   numNodes--;
 
    return flag;
 }
@@ -273,8 +283,6 @@ bool BinarySearchTree::remove ( const int & target )
 */
 void BinarySearchTree::removeNode ( BinaryNode* nodePtr )
 {
-   std::cout << "In removeNode...\n";
-
    delete nodePtr;
 }
 
