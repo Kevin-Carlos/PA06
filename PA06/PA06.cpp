@@ -12,6 +12,9 @@
 */
 // Header Files ////////////////////////////////////////////////////////////////
 #include <iostream>
+#include <vector>
+#include <ctime>
+#include <algorithm>
 
 #include "BinarySearchTree.h"
 
@@ -19,10 +22,23 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+//Function Protoypes ///////////////////////////////////////////////////////////
+void case1 ( std::vector<int>& );
+
 int main ( )
 {
    int choice;
    BinarySearchTree tree;
+   std::vector<int> rngNumsCase1;
+
+   //Seed the RNG
+   srand ( time ( NULL ) );
+
+   //Case 1: 100 unique numbers in the range 1-200
+   //Create a vector of above specs
+   case1 ( rngNumsCase1 );
+
+
    tree.add ( 11 );
    tree.add ( 6 );
    tree.add ( 2 );
@@ -50,4 +66,43 @@ int main ( )
 
 
    return 0;
+}
+
+void case1 ( std::vector<int>& rngNums )
+{
+   long int numbers;
+   int index = 0;
+   bool contains;
+   const int MAX_SIZE = 100;
+
+   while ( index < MAX_SIZE )
+   {
+      contains = false;
+      //Generate a random number
+      numbers = ( rand ( ) % 200 ) + 1; //Generate numbers within 1-200
+
+      //Check if vector is empty
+      if ( rngNums.empty ( ) )
+      {
+         contains = false;
+      }
+      //else check the vector if the number already exists
+      else
+      {
+         for ( int index2 = 0; index2 < MAX_SIZE; index2++ )
+         {
+            //If true will set to true
+            //contains = ( rngNums [ index2 ] == numbers ) ? true : false;
+            if ( rngNums [ index2 ] == numbers )
+            {
+               contains = true;
+            }
+         }
+      }
+      if ( contains == false )
+      {
+         rngNums.push_back ( numbers );
+         index++;
+      }
+   }
 }

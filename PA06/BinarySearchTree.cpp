@@ -4,6 +4,10 @@
 *
 * @details Implementation file for the BinarySearchTree class
 *
+* @version 1.05
+*          +Am able to remove the correct target node
+*              ---Must delete the pointer pointing to deleted node
+*
 * @version 1.04
 *          +Implementation of traversals and work arounds to print them
 *
